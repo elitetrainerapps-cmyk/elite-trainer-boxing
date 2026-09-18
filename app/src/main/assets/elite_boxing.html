@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+  <meta name="theme-color" content="#070707">
+  <title>Elite Trainer Boxing</title>
+  <style>
+    :root{--gold:#f4b400;--gold2:#ffd452;--black:#060606;--panel:#111;--line:#292929;--muted:#a8a8a8}
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{margin:0;min-height:100%;background:var(--black);color:#fff;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+    body{background:radial-gradient(circle at 50% 15%,rgba(244,180,0,.18),transparent 31%),linear-gradient(#080808,#030303);padding:calc(16px + env(safe-area-inset-top)) 16px calc(22px + env(safe-area-inset-bottom))}
+    button,select{font:inherit}.app{width:min(560px,100%);margin:auto}.screen{display:none;animation:enter .25s ease}.screen.active{display:block}@keyframes enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    .brand{display:flex;align-items:center;gap:11px}.ring-logo{width:47px;height:47px;border:2px solid var(--gold);border-radius:13px;position:relative;box-shadow:0 0 18px rgba(244,180,0,.18)}.ring-logo:before,.ring-logo:after{content:"";position:absolute;left:8px;right:8px;height:2px;background:#fff}.ring-logo:before{top:15px}.ring-logo:after{bottom:15px}.eyebrow{color:var(--gold);font-size:10px;font-weight:900;letter-spacing:1.8px}.brand h1{font-size:20px;line-height:1.05;margin:4px 0 0}.gold{color:var(--gold2)}
+    .hero{text-align:center;padding:30px 10px 22px}.hero h2{font-size:29px;margin:0 0 8px}.hero p{max-width:390px;margin:auto;color:#bcbcbc;line-height:1.45;font-size:14px}.fight-orb{width:190px;height:190px;margin:25px auto 17px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle,rgba(244,180,0,.2),rgba(8,8,8,.94) 65%);box-shadow:0 0 0 10px rgba(244,180,0,.035),0 0 45px rgba(244,180,0,.17)}.fight-orb:before,.fight-orb:after{content:"";position:absolute;border:1px solid rgba(244,180,0,.36);border-radius:50%;inset:12px}.fight-orb:after{inset:27px;border-color:rgba(255,255,255,.12)}.fist{font-size:56px;filter:grayscale(1) sepia(1) saturate(4);transform:rotate(-12deg)}.orb-label{font-size:11px;font-weight:950;letter-spacing:2px;margin-top:8px}
+    .menu{display:grid;gap:12px}.menu-row{width:100%;min-height:84px;display:flex;align-items:center;text-align:left;border:1px solid var(--line);border-radius:17px;background:linear-gradient(135deg,#141414,#0c0c0c);color:#fff;padding:16px;position:relative}.menu-row.primary{border-color:rgba(244,180,0,.7);background:linear-gradient(135deg,rgba(244,180,0,.14),#101010 58%)}.menu-icon{width:45px;height:45px;flex:0 0 45px;margin-right:13px;border-radius:12px;display:grid;place-items:center;background:#222;color:var(--gold2);font-size:21px}.menu-row strong{display:block;font-size:16px;margin-bottom:5px}.menu-row small{display:block;color:#aaa;line-height:1.3;padding-right:28px}.arrow{position:absolute;right:16px;color:var(--gold2);font-size:24px}.pro{position:absolute;right:14px;top:12px;background:var(--gold);color:#080808;border-radius:99px;padding:4px 8px;font-size:9px;font-weight:1000;letter-spacing:.5px}.menu-row:active{transform:scale(.985)}
+    .topbar{display:flex;align-items:center;gap:12px;margin-bottom:22px}.back{width:44px;height:44px;border:1px solid #333;border-radius:12px;background:#111;color:#fff;font-size:22px}.topbar h2{margin:0;font-size:21px}.card{padding:18px;border-radius:19px;background:rgba(17,17,17,.97);border:1px solid var(--line)}.card-title{margin:0 0 6px;font-size:19px}.intro{margin:0 0 20px;color:#aaa;font-size:13px;line-height:1.45}.field{margin-top:14px}label{display:block;margin-bottom:7px;color:#bdbdbd;font-size:11px;font-weight:900;letter-spacing:.8px;text-transform:uppercase}select{width:100%;height:52px;border:1px solid #353535;border-radius:13px;background:#090909;color:#fff;padding:0 13px;outline:none}select:focus{border-color:var(--gold)}.style-note{margin-top:12px;padding:11px 12px;border-left:3px solid var(--gold);background:#090909;color:#c3c3c3;font-size:12px;line-height:1.4}.button{width:100%;min-height:54px;border:0;border-radius:14px;font-weight:950;letter-spacing:.5px;margin-top:17px}.button.gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#070707;box-shadow:0 9px 25px rgba(244,180,0,.17)}.button.dark{background:#1a1a1a;border:1px solid #343434;color:#fff}.button.stop{background:#361010;border:1px solid #6b2020;color:#fff}
+    .round-screen{text-align:center}.round-type{color:var(--gold2);font-size:11px;font-weight:950;letter-spacing:1.8px}.matchup{font-size:15px;font-weight:850;margin:8px 0 0}.timer{font-size:62px;font-weight:1000;letter-spacing:1px;color:var(--gold2);margin:24px 0 17px;font-variant-numeric:tabular-nums}.callout{min-height:150px;display:grid;place-items:center;padding:22px;border:1px solid rgba(244,180,0,.55);border-radius:21px;background:radial-gradient(circle,rgba(244,180,0,.12),#0c0c0c 68%);font-size:25px;font-weight:950;line-height:1.28}.mini-plan{text-align:left;display:grid;gap:7px;margin-top:13px}.mini-plan div{background:#0b0b0b;border-radius:10px;padding:10px 12px;color:#ccc;font-size:12px;line-height:1.4}.mini-plan b{color:var(--gold2)}.round-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.status{color:#8d8d8d;font-size:11px;margin-top:12px}.legal{text-align:center;color:#666;font-size:10px;margin-top:20px}
+    .overlay{position:fixed;inset:0;z-index:20;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,.94)}.overlay.show{display:flex}.modal{width:min(500px,100%);max-height:88vh;overflow:auto;background:#111;border:1px solid #3d3420;border-radius:21px;padding:20px}.modal h2{margin:7px 0}.modal p{color:#bbb;line-height:1.5;font-size:13px}.benefits{list-style:none;padding:0}.benefits li{padding:7px 0;color:#ddd}.benefits li:before{content:"✓";color:var(--gold);font-weight:900;margin-right:8px}.price{font-size:23px;font-weight:950;color:var(--gold2);margin:14px 0}.check{display:flex;gap:10px;align-items:flex-start;margin:14px 0}.check input{width:20px;height:20px;accent-color:var(--gold)}.check label{text-transform:none;letter-spacing:0;color:#eee;font-size:13px}.modal .button{margin-top:8px}.modal .button:disabled{opacity:.35}
+    .ring-logo{display:grid;place-items:center;font-size:24px}.ring-logo:before,.ring-logo:after{display:none}.ring-logo .glove{filter:grayscale(1) sepia(1) saturate(5)}
+    .wallet-card{margin:0 0 14px;padding:13px;border:1px solid rgba(153,69,255,.5);border-radius:15px;background:linear-gradient(135deg,rgba(153,69,255,.13),rgba(20,241,149,.055),#101010)}.wallet-row{display:flex;align-items:center;gap:10px}.solana-mark{font-size:18px;font-weight:1000;background:linear-gradient(90deg,#9945ff,#14f195);-webkit-background-clip:text;color:transparent;letter-spacing:1px}.wallet-button{margin-left:auto;border:1px solid #7251a8;border-radius:10px;background:#18111f;color:#fff;padding:10px 12px;font-size:11px;font-weight:950}.wallet-button.connected{border-color:#14f195;color:#14f195}.wallet-button:disabled{opacity:.9}.wallet-address{display:none;margin-top:9px;color:#aaa;font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pro-status{margin:12px 0 5px;padding:11px;border:1px solid #343434;border-radius:12px;background:#090909}.pro-status strong{display:block;color:var(--gold2);font-size:13px}.pro-note{color:#aaa;font-size:12px;line-height:1.45;margin-top:6px}.pro-expiry{display:none;color:#14f195;font-size:11px;font-weight:900;margin-top:8px}.pro-error{display:none;color:#ff8e8e;font-size:11px;margin-top:9px}.solana-foot{margin-top:10px;text-align:center;color:#777;font-size:10px}
+    .terms-card{display:flex;flex-direction:column;max-height:92vh}.terms-card>p{margin:2px 0 10px}.terms-scroll{height:55vh;overflow-y:auto;border:1px solid #3b321d;border-radius:13px;background:#080808;padding:14px;overscroll-behavior:contain}.terms-scroll h3{font-size:13px;line-height:1.3;margin:18px 0 7px;color:#fff}.terms-scroll .terms-doc-title{text-align:center;color:var(--gold2);margin-top:0;font-size:14px}.terms-scroll p,.terms-scroll li{font-size:11px;line-height:1.5;color:#ddd;text-align:left}.terms-scroll p{margin:0 0 9px}.terms-scroll ul{margin:0 0 10px;padding-left:20px}.terms-status{text-align:center;color:#999;font-size:10px;font-weight:900;margin:9px 0}.terms-status.ready{color:var(--gold2)}.terms-links{display:flex;justify-content:center;gap:15px;margin:0 0 9px}.terms-links a{color:var(--gold2);font-size:10px;font-weight:900}.terms-check.locked{opacity:.4}.terms-check.unlocked{opacity:1}.terms-check span{font-size:12px;line-height:1.35}.legal-button{border:0;background:transparent;color:#8a8a8a;text-decoration:underline;font-size:10px;margin-top:9px}
+    @media(max-width:390px){.hero{padding-top:23px}.fight-orb{width:165px;height:165px}.hero h2{font-size:25px}.menu-row{min-height:79px}.timer{font-size:52px}.callout{font-size:22px}}
+  </style>
+</head>
+<body>
+<main class="app">
+  <section class="screen active" id="homeScreen">
+    <header class="brand"><div class="ring-logo"><span class="glove">🥊</span></div><div><div class="eyebrow">ELITE TRAINER APPS</div><h1>ELITE TRAINER <span class="gold">BOXING</span></h1></div></header>
+    <div class="hero"><div class="fight-orb"><div><div class="fist">🥊</div><div class="orb-label">READY TO BOX</div></div></div><h2>Build your boxing round.</h2><p>Choose your training mode. The coach handles the combinations and timing.</p></div>
+    <div class="wallet-card"><div class="wallet-row"><span class="solana-mark">SOLANA</span><button class="wallet-button" id="solanaConnectBtn" type="button">CONNECT WALLET</button></div><div class="wallet-address" id="solanaWalletAddress"></div></div>
+    <div class="menu">
+      <button class="menu-row primary" id="openTrainer"><span class="menu-icon">🥊</span><span><strong>BOXING TRAINER</strong><small>Combinations, movement and spoken rounds</small></span><span class="arrow">›</span></button>
+      <button class="menu-row" id="openVs"><span class="menu-icon">VS</span><span><strong>BOXING VS PACK</strong><small>Your style against a specific opponent</small></span><span class="pro">PRO</span><span class="arrow">›</span></button>
+    </div>
+    <div class="legal">Elite Trainer Apps Ltd · Train safely<br><button class="legal-button" id="openTerms" type="button">TERMS &amp; PRIVACY</button></div>
+  </section>
+
+  <section class="screen" id="trainerScreen">
+    <div class="topbar"><button class="back" data-back>‹</button><h2>Boxing Trainer</h2></div>
+    <div class="card"><h3 class="card-title">Set your round</h3><p class="intro">Choose your settings, then press start.</p>
+      <div class="field"><label for="style">Boxing style</label><select id="style"></select><div class="style-note" id="styleNote"></div></div>
+      <div class="field"><label for="stance">Stance</label><select id="stance"><option value="orthodox">Orthodox</option><option value="southpaw">Southpaw</option></select></div>
+      <div class="field"><label for="duration">Round length</label><select id="duration"><option value="60">1 minute</option><option value="120">2 minutes</option><option value="180" selected>3 minutes</option></select></div>
+      <div class="field"><label for="speed">Coach speed</label><select id="speed"><option value="0.82">Slow</option><option value="1.02" selected>Medium</option><option value="1.35">Fast</option></select></div>
+      <button class="button gold" id="startTrainer">START BOXING</button>
+    </div>
+  </section>
+
+  <section class="screen" id="vsScreen">
+    <div class="topbar"><button class="back" data-back>‹</button><h2>Boxing VS Pack <span class="gold">PRO</span></h2></div>
+    <div class="card"><h3 class="card-title">Build your matchup</h3><p class="intro">Choose your style and the opponent. The coach builds the game plan.</p>
+      <div class="field"><label for="yourStyle">Your style</label><select id="yourStyle"></select></div>
+      <div class="field"><label for="opponentStyle">Opponent style</label><select id="opponentStyle"></select></div>
+      <div class="field"><label for="yourStance">Your stance</label><select id="yourStance"><option value="orthodox">Orthodox</option><option value="southpaw">Southpaw</option></select></div>
+      <div class="field"><label for="opponentStance">Opponent stance</label><select id="opponentStance"><option value="orthodox">Orthodox</option><option value="southpaw">Southpaw</option></select></div>
+      <div class="field"><label for="vsSpeed">Coach speed</label><select id="vsSpeed"><option value="0.82">Slow</option><option value="1.02" selected>Medium</option><option value="1.35">Fast</option></select></div>
+      <button class="button gold" id="startVs">START VS ROUND</button>
+      <button class="button dark" id="managePro">CHECK PRO ACCESS</button>
+    </div>
+  </section>
+
+  <section class="screen round-screen" id="roundScreen">
+    <div class="topbar"><button class="back" id="exitRound">‹</button><h2>Training Round</h2></div>
+    <div class="round-type" id="roundType">BOXING TRAINER</div><div class="matchup" id="matchup"></div><div class="timer" id="timer">03:00</div>
+    <div class="callout" id="callout">Get ready.</div><div class="mini-plan" id="plan"></div>
+    <div class="round-actions"><button class="button gold" id="pause">PAUSE</button><button class="button stop" id="stop">STOP</button></div><div class="status" id="status">Coach active</div>
+  </section>
+</main>
+
+<div class="overlay" id="termsOverlay" role="dialog" aria-modal="true"><section class="modal terms-card"><h2>Full Terms &amp; Conditions</h2><p>All 22 sections are included below. Scroll to the bottom before continuing.</p>
+<div class="terms-scroll" id="termsScroll" tabindex="0">
+<h3 class="terms-doc-title">ELITE TRAINER APPS – TERMS OF USE</h3>
+<p>Effective date: 5 August 2026</p>
+<p>These Terms of Use apply to the following mobile applications:</p>
+<ul>
+<li>Elite Trainer Striking</li>
+<li>Elite Trainer Combo Builder</li>
+<li>Elite Trainer Round Timer</li>
+<li>Elite Trainer Fight IQ</li>
+<li>Elite Trainer Boxing</li>
+</ul>
+<p>Together, these applications are referred to in these Terms as the “Elite Trainer Apps” or the “Apps”.</p>
+<p>Please read these Terms carefully before downloading, installing, accessing or using any of the Apps.</p>
+<p>By downloading, installing, accessing or using an App, you agree to these Terms. If you do not agree to these Terms, you should not use the Apps.</p>
+<h3>1. WHO WE ARE</h3>
+<p>The Elite Trainer Apps are owned and operated by:</p>
+<p>ELITE TRAINER APPS LTD</p>
+<p>124-128 City Road</p>
+<p>London</p>
+<p>EC1V 2NX</p>
+<p>United Kingdom</p>
+<p>Email:</p>
+<p>support@elitetrainerapps.co.uk</p>
+<p>Telephone:</p>
+<p>+44 7944 418285</p>
+<p>In these Terms, “we”, “us” and “our” refer to ELITE TRAINER APPS LTD.</p>
+<h3>2. ABOUT THE ELITE TRAINER APPS</h3>
+<p>The Elite Trainer Apps provide tools designed to support exercise, martial-arts training, striking practice, fitness sessions and general training activities.</p>
+<p>Elite Trainer Striking may provide striking-related training tools, prompts, exercises, combinations or workout features.</p>
+<p>Elite Trainer Boxing may provide boxing-related training tools, spoken combinations, timed rounds, opponent-style guidance and paid 30-day VS Pack access.</p>
+<p>Elite Trainer Combo Builder may generate, display or announce striking combinations, movements and training sequences.</p>
+<p>Elite Trainer Round Timer may provide timed training rounds, rest periods, preparation countdowns, voice announcements, motivational prompts, bell sounds, colour warnings and local music-playback features.</p>
+<p>The Apps are intended to act as general training aids only.</p>
+<p>They are not substitutes for qualified coaching, professional supervision, medical advice or emergency equipment.</p>
+<h3>3. TRAINING AND EXERCISE AT YOUR OWN RISK</h3>
+<p>Physical exercise, martial arts, combat sports, striking training and fitness activities involve risks.</p>
+<p>These risks may include tiredness, falls, collisions, muscle strains, joint injuries and other physical injuries.</p>
+<p>You are responsible for deciding whether you are physically able to perform any exercise, movement, striking combination or training session.</p>
+<p>You should:</p>
+<ul>
+<li>train in a safe and suitable area;</li>
+<li>use suitable protective equipment where appropriate;</li>
+<li>follow the advice of a qualified coach or instructor;</li>
+<li>train within your level of experience, fitness and physical ability;</li>
+<li>avoid dangerous, reckless or unlawful use of the Apps;</li>
+<li>take suitable rest and recovery; and</li>
+<li>ensure that your surroundings are safe before beginning a session.</li>
+</ul>
+<p>You use the Apps and participate in any related training at your own risk.</p>
+<h3>4. NO MEDICAL ADVICE</h3>
+<p>The Apps do not provide medical advice, medical diagnosis, treatment, rehabilitation services or emergency assistance.</p>
+<p>Information, timers, combinations, voice prompts, motivational messages and training suggestions provided through the Apps are for general training and informational purposes only.</p>
+<p>You should consult a doctor, physiotherapist or other qualified healthcare professional before beginning or changing an exercise programme if you:</p>
+<ul>
+<li>have a medical condition;</li>
+<li>have an injury;</li>
+<li>are pregnant;</li>
+<li>are recovering from an operation;</li>
+<li>take medication that may affect exercise;</li>
+<li>have been advised to limit physical activity; or</li>
+<li>have any concerns about your health or fitness.</li>
+</ul>
+<h3>5. STOP IF YOU FEEL UNWELL</h3>
+<p>Stop exercising immediately if you experience:</p>
+<ul>
+<li>pain;</li>
+<li>dizziness;</li>
+<li>faintness;</li>
+<li>unusual shortness of breath;</li>
+<li>chest discomfort;</li>
+<li>nausea;</li>
+<li>unusual weakness;</li>
+<li>loss of balance; or</li>
+<li>any other concerning symptom.</li>
+</ul>
+<p>Seek medical help where appropriate.</p>
+<p>Do not continue exercising simply because a timer, round, combination, music track or training session has not finished.</p>
+<p>In an emergency, contact your local emergency services.</p>
+<h3>6. TIMER, VOICE, BELL, MUSIC AND ALERT FEATURES</h3>
+<p>We aim to make the Apps reliable, but we do not guarantee that any timer, countdown, combination, voice announcement, motivational message, bell, alert, vibration, colour warning, music player or other feature will always:</p>
+<ul>
+<li>operate without interruption;</li>
+<li>occur at an exact time;</li>
+<li>remain audible;</li>
+<li>remain available while the device is locked or in the background;</li>
+<li>work with every device, operating system or audio setting; or</li>
+<li>be free from errors or delays.</li>
+</ul>
+<p>Performance may be affected by:</p>
+<ul>
+<li>device performance;</li>
+<li>battery-saving settings;</li>
+<li>Android or WebView behaviour;</li>
+<li>operating-system updates;</li>
+<li>audio focus;</li>
+<li>volume settings;</li>
+<li>selected music files;</li>
+<li>background restrictions;</li>
+<li>other applications;</li>
+<li>hardware limitations; or</li>
+<li>circumstances outside our reasonable control.</li>
+</ul>
+<p>You should not rely on an App where a missed or delayed timer, bell, voice announcement, prompt or alert could create a risk of injury, loss or damage.</p>
+<p>Always remain aware of your surroundings and stop training when necessary.</p>
+<h3>7. GENERATED COMBINATIONS AND TRAINING CONTENT</h3>
+<p>Elite Trainer Combo Builder and Elite Trainer Striking may generate, display or announce combinations, movements, techniques or training sequences.</p>
+<p>Generated content is provided as a training aid only.</p>
+<p>It may not be appropriate for every:</p>
+<ul>
+<li>martial art;</li>
+<li>combat-sport ruleset;</li>
+<li>training environment;</li>
+<li>ability level;</li>
+<li>age group;</li>
+<li>injury;</li>
+<li>health condition; or</li>
+<li>physical limitation.</li>
+</ul>
+<p>You are responsible for reviewing each movement or combination before attempting it.</p>
+<p>Do not attempt a technique that you do not understand or cannot perform safely.</p>
+<p>Where appropriate, practise under the supervision of a qualified coach or instructor.</p>
+<h3>8. LOCAL MUSIC AND AUDIO FILES</h3>
+<p>Where an App allows you to select and play music or other audio files stored on your device, you are responsible for ensuring that you have the legal right to access and play that content.</p>
+<p>The Apps do not provide, upload, store, distribute or sell your selected music files.</p>
+<p>Selected files may be processed locally on your device for playback.</p>
+<p>We are not responsible for:</p>
+<ul>
+<li>unsupported or damaged audio files;</li>
+<li>missing permissions;</li>
+<li>interrupted playback;</li>
+<li>device-storage problems;</li>
+<li>copyright infringement caused by a user;</li>
+<li>lost or deleted files; or</li>
+<li>compatibility problems involving user-selected audio.</li>
+</ul>
+<h3>9. ACCEPTABLE USE</h3>
+<p>You agree to use the Apps only for lawful purposes.</p>
+<p>You must not:</p>
+<ul>
+<li>use an App in a way that could cause injury to another person;</li>
+<li>encourage dangerous, abusive or reckless training;</li>
+<li>use an App to organise or support unlawful activity;</li>
+<li>damage, disrupt or interfere with the Apps;</li>
+<li>introduce malware, viruses or harmful code;</li>
+<li>attempt to bypass security or technical restrictions;</li>
+<li>copy, modify, sell, rent, distribute or commercially exploit the Apps without permission;</li>
+<li>reverse engineer, decompile or extract source code except where permitted by law;</li>
+<li>remove ownership, copyright or branding notices;</li>
+<li>falsely claim that you created, own or officially represent the Apps; or</li>
+<li>use the Elite Trainer name, logos, branding or content without permission.</li>
+</ul>
+<p>We may restrict or discontinue access to an App if we reasonably believe it is being used unlawfully or in breach of these Terms.</p>
+<h3>10. INTELLECTUAL PROPERTY</h3>
+<p>The Elite Trainer Apps and their original content are owned by or licensed to ELITE TRAINER APPS LTD.</p>
+<p>This includes, where applicable:</p>
+<ul>
+<li>software;</li>
+<li>source code;</li>
+<li>layouts;</li>
+<li>designs;</li>
+<li>graphics;</li>
+<li>written content;</li>
+<li>names;</li>
+<li>logos;</li>
+<li>branding;</li>
+<li>training templates;</li>
+<li>generated combination structures;</li>
+<li>audio arrangements; and</li>
+<li>visual elements.</li>
+</ul>
+<p>“Elite Trainer”, “Elite Trainer Striking”, “Elite Trainer Combo Builder”, “Elite Trainer Round Timer” and related branding may not be copied or used without permission.</p>
+<p>We grant you a limited, personal, non-exclusive, non-transferable and revocable right to install and use the Apps for lawful personal use.</p>
+<p>No ownership rights are transferred to you.</p>
+<h3>11. THIRD-PARTY SERVICES AND LINKS</h3>
+<p>The Apps may contain links to:</p>
+<ul>
+<li>Google Play;</li>
+<li>other Elite Trainer Apps;</li>
+<li>external websites;</li>
+<li>app stores; or</li>
+<li>other third-party services.</li>
+</ul>
+<p>Third-party services are operated independently and may have their own terms, privacy policies and rules.</p>
+<p>We do not control third-party services and are not responsible for their:</p>
+<ul>
+<li>availability;</li>
+<li>content;</li>
+<li>security;</li>
+<li>products;</li>
+<li>services;</li>
+<li>privacy practices; or</li>
+<li>terms.</li>
+</ul>
+<p>Opening or using a third-party service is your choice and is subject to that service’s own terms.</p>
+<h3>12. AVAILABILITY, UPDATES AND CHANGES</h3>
+<p>We may update, change, suspend, replace or discontinue any part of the Apps where reasonably necessary.</p>
+<p>This may happen for reasons including:</p>
+<ul>
+<li>security;</li>
+<li>maintenance;</li>
+<li>legal compliance;</li>
+<li>compatibility;</li>
+<li>performance improvements;</li>
+<li>feature changes;</li>
+<li>app-store requirements; or</li>
+<li>technical limitations.</li>
+</ul>
+<p>Some features may change because of Android updates, device restrictions, WebView updates or third-party services.</p>
+<p>We do not guarantee that every feature will remain available permanently or work on every device.</p>
+<p>You are responsible for keeping your device and App version reasonably up to date.</p>
+<h3>13. DISCLAIMER</h3>
+<p>The Apps are provided on an “as is” and “as available” basis.</p>
+<p>To the fullest extent permitted by law, we do not guarantee that the Apps will be:</p>
+<ul>
+<li>continuously available;</li>
+<li>completely accurate;</li>
+<li>free from defects, delays or interruptions;</li>
+<li>suitable for your individual training needs;</li>
+<li>compatible with every device;</li>
+<li>suitable for professional competition;</li>
+<li>suitable for medical or rehabilitation use; or</li>
+<li>suitable as safety-critical equipment.</li>
+</ul>
+<p>You remain responsible for your:</p>
+<ul>
+<li>training decisions;</li>
+<li>physical safety;</li>
+<li>surroundings;</li>
+<li>equipment;</li>
+<li>supervision; and</li>
+<li>use of any generated training content.</li>
+</ul>
+<p>Nothing in these Terms removes any legal rights or guarantees that cannot lawfully be excluded.</p>
+<h3>14. LIMITATION OF LIABILITY</h3>
+<p>Nothing in these Terms excludes or limits liability where it would be unlawful to do so.</p>
+<p>Nothing in these Terms removes any statutory rights that you may have as a consumer.</p>
+<p>To the fullest extent permitted by law, we will not be responsible for loss, injury or damage arising from:</p>
+<ul>
+<li>unsafe or improper exercise;</li>
+<li>attempting movements beyond your ability;</li>
+<li>failure to follow medical or professional advice;</li>
+<li>missed, delayed or inaudible timers, bells, prompts, voices or alerts;</li>
+<li>reliance on generated combinations or training suggestions;</li>
+<li>unsupported or faulty devices;</li>
+<li>battery restrictions;</li>
+<li>operating-system behaviour;</li>
+<li>WebView behaviour;</li>
+<li>third-party applications or services;</li>
+<li>user-selected music or audio;</li>
+<li>circumstances outside our reasonable control;</li>
+<li>misuse of the Apps; or</li>
+<li>unauthorised changes to the Apps or their files.</li>
+</ul>
+<p>Nothing in these Terms excludes or limits liability for:</p>
+<ul>
+<li>death or personal injury caused by negligence;</li>
+<li>fraud;</li>
+<li>fraudulent misrepresentation; or</li>
+<li>any other liability that cannot legally be excluded or limited.</li>
+</ul>
+<h3>15. CHILDREN AND YOUNG USERS</h3>
+<p>Children and young people should use the Apps only with suitable permission, supervision and guidance from a parent, guardian, qualified coach or responsible adult.</p>
+<p>The Apps should not be used to encourage:</p>
+<ul>
+<li>unsupervised contact training;</li>
+<li>dangerous techniques;</li>
+<li>reckless exercise; or</li>
+<li>activity unsuitable for the user’s age, experience or physical ability.</li>
+</ul>
+<h3>16. PRIVACY</h3>
+<p>Our collection and handling of personal information is explained in the Elite Trainer Apps Privacy Policy.</p>
+<p>The Privacy Policy is separate from these Terms of Use and should remain publicly accessible.</p>
+<p>You should review the Privacy Policy before using the Apps.</p>
+<h3>17. TERMINATION</h3>
+<p>You may stop using an App at any time by uninstalling it.</p>
+<p>Your permission to use an App may end if you materially breach these Terms.</p>
+<p>Sections concerning intellectual property, disclaimers, liability and other provisions intended to continue will remain effective after you stop using the Apps.</p>
+<h3>18. CHANGES TO THESE TERMS</h3>
+<p>We may update these Terms to reflect:</p>
+<ul>
+<li>changes to the Apps;</li>
+<li>new features;</li>
+<li>legal or regulatory requirements;</li>
+<li>app-store requirements;</li>
+<li>security changes; or</li>
+<li>changes to our business.</li>
+</ul>
+<p>The latest version will be published on our website with an updated effective date.</p>
+<p>Where appropriate, notice may also be provided through:</p>
+<ul>
+<li>the Apps;</li>
+<li>the relevant app-store listing; or</li>
+<li>our website.</li>
+</ul>
+<p>Your continued use of an App after revised Terms become effective means that the revised Terms apply to your future use of the App.</p>
+<h3>19. GOVERNING LAW</h3>
+<p>These Terms are governed by the laws of England and Wales.</p>
+<p>If you are a consumer, you may also have rights under the mandatory laws of the country or region where you live.</p>
+<p>Nothing in these Terms removes rights that cannot legally be removed.</p>
+<p>You may bring a claim in any court that has jurisdiction under applicable law.</p>
+<h3>20. SEVERABILITY</h3>
+<p>If any part of these Terms is found to be unlawful, invalid or unenforceable, the remaining sections will continue to apply.</p>
+<h3>21. CONTACT US</h3>
+<p>For questions, concerns or support relating to the Elite Trainer Apps or these Terms, contact:</p>
+<p>ELITE TRAINER APPS LTD</p>
+<p>124-128 City Road</p>
+<p>London</p>
+<p>EC1V 2NX</p>
+<p>United Kingdom</p>
+<p>Email:</p>
+<p>support@elitetrainerapps.co.uk</p>
+<p>Telephone:</p>
+<p>+44 7944 418285</p>
+<p>Applications covered by these Terms:</p>
+<ul>
+<li>Elite Trainer Striking</li>
+<li>Elite Trainer Combo Builder</li>
+<li>Elite Trainer Round Timer</li>
+<li>Elite Trainer Fight IQ</li>
+<li>Elite Trainer Boxing</li>
+</ul>
+<p>Effective date:</p>
+<p>5 August 2026</p>
+<h3>22. SOLANA PAYMENTS AND 30-DAY ACCESS</h3>
+<p>Where offered, Boxing VS Pack access costs 2.50 USDC and lasts for 30 days from a successfully verified payment. It is not an automatically renewing subscription.</p>
+<p>You must review and approve the transaction in your compatible Solana wallet. Blockchain transactions are normally irreversible. You are responsible for checking the amount, token, connected wallet and receiving address before approving.</p>
+<p>Access is activated only after the App verifies on Solana that the exact payment came from the same wallet connected to the App. Solana network fees may apply.</p>
+<p>If a payment is submitted but access does not activate, use Check Payment or contact support with the public transaction signature. Never provide your seed phrase or private key.</p>
+</div>
+<div class="terms-status" id="termsStatus">SCROLL TO THE BOTTOM TO UNLOCK ACCEPTANCE</div>
+<div class="terms-links"><a href="https://www.elitetrainerapps.co.uk/elite-trainer-apps-terms-of-use">FULL TERMS ONLINE</a><a href="https://www.elitetrainerapps.co.uk/privacy-policy">PRIVACY POLICY</a></div>
+<div class="check terms-check locked" id="termsCheckRow"><input type="checkbox" id="acceptCheck" disabled><span>I have read and agree to the Terms of Use and Privacy Policy.</span></div>
+<button class="button gold" id="acceptBtn" disabled>ACCEPT &amp; CONTINUE</button></section></div>
+
+<div class="overlay" id="proOverlay"><section class="modal"><div class="eyebrow">SOLANA · 30-DAY ACCESS</div><h2>Unlock Boxing VS Pack</h2><p>Train your boxing style against a specific opponent style.</p><ul class="benefits"><li>Style-vs-style game plans</li><li>Orthodox and southpaw matchups</li><li>Dangers, counters and tactics</li><li>Continuous spoken VS rounds</li></ul><div class="price" id="proAccessBadge">2.50 USDC · 30 DAYS</div><div class="pro-status"><strong id="proPaymentStatus">PRO LOCKED</strong><div class="pro-note" id="proPaymentNote">Connect your Solana wallet to unlock the VS Pack.</div><div class="pro-expiry" id="proExpiry"></div><div class="pro-error" id="proError"></div></div><button class="button gold" id="proSubscribeBtn">UNLOCK PRO — 2.50 USDC</button><button class="button dark" id="proCheckBtn">CHECK PAYMENT</button><button class="button dark" id="closePro">NOT NOW</button><div class="solana-foot">Payment is approved in your wallet and verified on Solana.</div></section></div>
+
+<script>
+(() => {
+  "use strict";
+  const $=id=>document.getElementById(id),pick=a=>a[Math.floor(Math.random()*a.length)];
+  const styles={
+    "boxer-puncher":{name:"Classic Boxer-Puncher",note:"Balanced offence, defence and controlled combinations.",open:["double jab","jab, cross","jab to the body"],end:["pivot out","step off line","rear hand high"]},
+    "peekaboo":{name:"Peek-a-Boo Pressure",note:"Compact guard, head movement, explosive entries and hooks.",open:["slip outside, jab","double slip, lead hook","jab to the body"],end:["roll under","step inside","angle out"]},
+    "outboxer":{name:"Outside Boxer",note:"Long jabs, straight punches, exits and lateral movement.",open:["double jab","jab, step back","jab while circling"],end:["step out","pivot away","circle off"]},
+    "counterpuncher":{name:"Counterpuncher",note:"Defend cleanly and answer immediately.",open:["catch the jab","slip outside","pull back"],end:["counter cross","lead hook counter","pivot out"]},
+    "philly":{name:"Philly-Shell Counter",note:"Shoulder-roll defence with sharp counters.",open:["shoulder roll","catch and slip","pull counter"],end:["rear cross","lead hook","roll away"]},
+    "inside":{name:"Inside Fighter",note:"Close-range hooks, uppercuts and body work.",open:["step inside behind the jab","double jab in","slip and close distance"],end:["roll under","frame and step out","pivot off"]},
+    "highguard":{name:"High-Guard Pressure",note:"Responsible pressure behind a compact guard.",open:["high guard, step in","double jab forward","jab, high guard"],end:["guard and step","cut off the angle","roll under"]},
+    "southpaw":{name:"Southpaw Specialist",note:"Lead-hand control, rear straights and outside angles.",open:["lead hand touch, rear cross","double jab","jab to the body"],end:["step to the outside","rear hand high","pivot out"]}
+  };
+  const plans={
+    "boxer-puncher":{watch:"Balanced combinations ending with hooks.",plan:"Break the rhythm and exit after every exchange.",defence:["slip outside","catch the jab","step off line"]},
+    "peekaboo":{watch:"Explosive entries, hooks and uppercuts.",plan:"Keep them turning and intercept their entry.",defence:["step back","pivot away","frame and turn"]},
+    "outboxer":{watch:"Long jabs, straight counters and fast exits.",plan:"Cut off the ring and work the body.",defence:["parry the jab","slip outside","double jab in"]},
+    "counterpuncher":{watch:"They wait for your first shot and answer.",plan:"Feint first, vary rhythm and exit safely.",defence:["feint the jab","double jab","touch the body"]},
+    "philly":{watch:"Shoulder rolls, pull counters and rear hands.",plan:"Double your attacks and work around the guard.",defence:["double jab","jab to the chest","lead hook to the body"]},
+    "inside":{watch:"Hooks, uppercuts and body shots inside.",plan:"Control range and turn them on entry.",defence:["long guard","step out","pivot away"]},
+    "highguard":{watch:"Steady forward pressure behind a high guard.",plan:"Change angles and never retreat straight back.",defence:["jab to the body","step off line","pivot and cross"]},
+    "southpaw":{watch:"Rear straights down the open side.",plan:"Win outside-foot position and control the lead hand.",defence:["lead hand control","step outside","slip outside"]}
+  };
+  const straight=["jab","cross","double jab","jab to the body","cross to the body"],power=["lead hook","rear hook","lead uppercut","rear uppercut","lead hook to the body"];
+  Object.entries(styles).forEach(([key,s])=>{["style","yourStyle","opponentStyle"].forEach(id=>$(id).add(new Option(s.name,key)))});$("opponentStyle").value="outboxer";
+  $("style").addEventListener("change",()=>$("styleNote").textContent=styles[$("style").value].note);$("styleNote").textContent=styles[$("style").value].note;
+  let proActive=false,isVs=false,running=false,paused=false,seconds=180,timerId=null,calloutId=null,returnScreen="trainerScreen";
+  function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));$(id).classList.add("active");window.scrollTo(0,0)}
+  function coachRate(){return Number($(isVs?"vsSpeed":"speed").value)}
+  function speak(text){const spoken=text.replace(/\blead\b/gi,"leed"),rate=coachRate();if(window.AndroidTTS?.speak)window.AndroidTTS.speak(spoken,rate);else if("speechSynthesis" in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(spoken);u.rate=rate;speechSynthesis.speak(u)}}
+  function stopVoice(){window.AndroidTTS?.stop();if("speechSynthesis" in window)speechSynthesis.cancel()}
+  function combo(){if(isVs){const yours=styles[$("yourStyle").value],match=plans[$("opponentStyle").value];return [pick(match.defence),pick(yours.open),pick(Math.random()<.5?straight:power),pick(yours.end)].join(", ")}const s=styles[$("style").value];return [pick(s.open),pick(straight),pick(power),pick(s.end)].join(", ")}
+  function nextCall(){if(!running||paused)return;const text=combo(),rate=coachRate(),gap=rate<.9?6200:rate>1.2?3300:4700;$("callout").textContent=text;speak(text);clearTimeout(calloutId);calloutId=setTimeout(nextCall,gap)}
+  function fmt(s){return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
+  function begin(){running=true;paused=false;$("pause").textContent="PAUSE";$("status").textContent="Coach active";show("roundScreen");speak("Round starts. Box.");clearInterval(timerId);timerId=setInterval(()=>{if(!running||paused)return;seconds--;$("timer").textContent=fmt(seconds);if(seconds<=0){endRound("Round complete");speak("Time. Round complete.")}},1000);calloutId=setTimeout(nextCall,1200)}
+  function endRound(message="Stopped"){running=false;paused=false;clearInterval(timerId);clearTimeout(calloutId);stopVoice();$("status").textContent=message}
+  function startTrainer(){isVs=false;returnScreen="trainerScreen";seconds=Number($("duration").value);$("timer").textContent=fmt(seconds);$("roundType").textContent="BOXING TRAINER";$("matchup").textContent=styles[$("style").value].name+" · "+$("stance").selectedOptions[0].text;$("plan").innerHTML="";$("callout").textContent="Get ready.";begin()}
+  function startVs(){if(!proActive){showPro();return}isVs=true;returnScreen="vsScreen";seconds=180;const yours=styles[$("yourStyle").value],theirs=styles[$("opponentStyle").value],match=plans[$("opponentStyle").value];$("timer").textContent=fmt(seconds);$("roundType").textContent="BOXING VS PACK";$("matchup").textContent=yours.name+" vs "+theirs.name;$("plan").innerHTML=`<div><b>GAME PLAN:</b> ${match.plan}</div><div><b>WATCH FOR:</b> ${match.watch}</div>`;$("callout").textContent="Get ready.";begin()}
+  function showPro(){$("proOverlay").classList.add("show");window.EliteBoxingSolana?.check(false)}
+  $("openTrainer").onclick=()=>show("trainerScreen");$("openVs").onclick=()=>proActive?show("vsScreen"):showPro();document.querySelectorAll("[data-back]").forEach(b=>b.onclick=()=>show("homeScreen"));$("startTrainer").onclick=startTrainer;$("startVs").onclick=startVs;
+  $("pause").onclick=()=>{if(!running)return;paused=!paused;$("pause").textContent=paused?"RESUME":"PAUSE";$("status").textContent=paused?"Paused":"Coach active";if(paused){clearTimeout(calloutId);stopVoice()}else nextCall()};$("stop").onclick=()=>{endRound();show(returnScreen)};$("exitRound").onclick=()=>{endRound();show(returnScreen)};
+  $("managePro").onclick=()=>showPro();$("closePro").onclick=()=>$("proOverlay").classList.remove("show");
+  window.setBoxingProActive=function(active){proActive=!!active;if(proActive){$("proOverlay").classList.remove("show");show("vsScreen")}};
+  const termsKey="eliteBoxingTermsMergedV5",termsBox=$("termsScroll"),termsStatus=$("termsStatus"),termsRow=$("termsCheckRow"),termsCheck=$("acceptCheck"),termsButton=$("acceptBtn");let termsUnlocked=false;
+  function unlockTerms(){if(termsUnlocked)return;termsUnlocked=true;termsCheck.disabled=false;termsRow.classList.remove("locked");termsRow.classList.add("unlocked");termsStatus.textContent="TERMS READ — CHECK THE BOX TO CONTINUE";termsStatus.classList.add("ready")}
+  function checkTermsScroll(){if(termsBox.scrollTop+termsBox.clientHeight>=termsBox.scrollHeight-6)unlockTerms()}
+  function resetTerms(){termsBox.scrollTop=0;termsUnlocked=false;termsCheck.checked=false;termsCheck.disabled=true;termsButton.disabled=true;termsRow.classList.add("locked");termsRow.classList.remove("unlocked");termsStatus.textContent="SCROLL TO THE BOTTOM TO UNLOCK ACCEPTANCE";termsStatus.classList.remove("ready")}
+  termsBox.addEventListener("scroll",checkTermsScroll,{passive:true});termsCheck.onchange=()=>termsButton.disabled=!termsCheck.checked;termsButton.onclick=()=>{if(!termsUnlocked||!termsCheck.checked)return;localStorage.setItem(termsKey,"accepted");$("termsOverlay").classList.remove("show")};
+  $("openTerms").onclick=()=>{$("termsOverlay").classList.add("show");resetTerms()};
+  if(localStorage.getItem(termsKey)!=="accepted"){$("termsOverlay").classList.add("show");resetTerms()}
+})();
+</script>
+<script>
+const SOLANA_WALLET_STORAGE_KEY='elite_boxing_wallet_address_v1';
+function renderSolanaWalletState(address){const button=document.getElementById('solanaConnectBtn'),box=document.getElementById('solanaWalletAddress'),connected=!!address;if(button){button.textContent=connected?'DISCONNECT WALLET':'CONNECT WALLET';button.classList.toggle('connected',connected);button.disabled=false}if(box){box.textContent=connected?address:'';box.style.display=connected?'block':'none'}if(typeof window.onEliteWalletStateChanged==='function')window.onEliteWalletStateChanged(connected?address:'')}
+function clearSolanaWalletState(){try{localStorage.removeItem(SOLANA_WALLET_STORAGE_KEY);localStorage.removeItem('elite_boxing_pro_reference_v1');localStorage.removeItem('elite_boxing_pro_expiry_v1')}catch(e){}renderSolanaWalletState('')}
+function connectSolanaWallet(){let saved='';try{saved=localStorage.getItem(SOLANA_WALLET_STORAGE_KEY)||''}catch(e){}if(saved){const button=document.getElementById('solanaConnectBtn');if(button){button.textContent='DISCONNECTING...';button.disabled=true}if(window.Solana&&typeof Solana.disconnect==='function')Solana.disconnect();else clearSolanaWalletState();return}if(window.Solana&&typeof Solana.connect==='function')Solana.connect()}
+window.onSolanaWalletConnected=function(address){if(!address)return;try{localStorage.setItem(SOLANA_WALLET_STORAGE_KEY,address)}catch(e){}renderSolanaWalletState(address)};
+window.onSolanaWalletDisconnected=clearSolanaWalletState;
+document.getElementById('solanaConnectBtn').addEventListener('click',connectSolanaWallet);
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>renderSolanaWalletState(localStorage.getItem(SOLANA_WALLET_STORAGE_KEY)||''));else renderSolanaWalletState(localStorage.getItem(SOLANA_WALLET_STORAGE_KEY)||'');
+</script>
+<script>
+(function(){
+  const PRO_API_BASE='https://elite-trainer-boxing.vercel.app/api/pro';
+  const REF_KEY='elite_boxing_pro_reference_v1',EXPIRY_KEY='elite_boxing_pro_expiry_v1';
+  let poll=null,count=0;
+  const id=x=>document.getElementById(x),status=id('proPaymentStatus'),note=id('proPaymentNote'),sub=id('proSubscribeBtn'),checkBtn=id('proCheckBtn'),expiry=id('proExpiry'),error=id('proError'),badge=id('proAccessBadge');
+  const wallet=()=>{try{return localStorage.getItem(SOLANA_WALLET_STORAGE_KEY)||''}catch(e){return''}},reference=()=>{try{return localStorage.getItem(REF_KEY)||''}catch(e){return''}},saveRef=v=>{try{v?localStorage.setItem(REF_KEY,v):localStorage.removeItem(REF_KEY)}catch(e){}};
+  function setError(v){error.textContent=v||'';error.style.display=v?'block':'none'}
+  function locked(message){window.setBoxingProActive(false);status.textContent='PRO LOCKED';badge.textContent='2.50 USDC · 30 DAYS';note.textContent=message||'Connect your Solana wallet, then approve the 2.50 USDC payment.';sub.style.display='block';sub.disabled=!wallet();sub.textContent='UNLOCK PRO — 2.50 USDC';checkBtn.style.display=reference()?'block':'none';expiry.style.display='none'}
+  function waiting(){window.setBoxingProActive(false);status.textContent='WAITING FOR PAYMENT';note.textContent='Approve payment using the same connected wallet, then return here. We will verify it automatically.';sub.style.display='none';checkBtn.style.display='block';expiry.style.display='none'}
+  function active(until){setError('');window.setBoxingProActive(true);status.textContent='PRO ACTIVE';badge.textContent='PRO ACTIVE';note.textContent='Boxing VS Pack is unlocked and verified on Solana.';sub.style.display='none';checkBtn.style.display='none';expiry.textContent=until?'ACTIVE UNTIL '+new Date(until).toLocaleDateString('en-GB'):'';expiry.style.display=until?'block':'none';try{if(until)localStorage.setItem(EXPIRY_KEY,until)}catch(e){}stopPoll()}
+  async function post(path,payload){const r=await fetch(PRO_API_BASE+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});let data={};try{data=await r.json()}catch(e){}if(!r.ok)throw new Error(data.error||('Server error '+r.status));return data}
+  async function check(silent=true){if(!wallet()){locked('Connect your Solana wallet before subscribing.');return false}if(!silent)setError('');try{const data=await post('/check',{wallet:wallet(),reference:reference(),product:'elite_boxing_pro'});if(data.active){if(data.reference)saveRef(data.reference);active(data.expiresAt||'');return true}reference()?waiting():locked();return false}catch(e){if(!silent)setError(e.message||'Could not check payment.');reference()?waiting():locked();return false}}
+  function stopPoll(){if(poll)clearInterval(poll);poll=null;count=0}function startPoll(){stopPoll();poll=setInterval(async()=>{count++;if(await check(true)||count>=40)stopPoll()},3000)}
+  async function subscribe(){const connectedWallet=wallet();if(!connectedWallet){locked('Connect your Solana wallet first.');return}setError('');sub.disabled=true;sub.textContent='CREATING PAYMENT...';try{const data=await post('/create-checkout',{wallet:connectedWallet,product:'elite_boxing_pro'});if(data.active){active(data.expiresAt||'');return}if(!data.reference)throw new Error('Payment request was not created.');const params=new URLSearchParams({amount:'2.50','spl-token':'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',reference:data.reference,label:'Elite Trainer Boxing',message:'Boxing VS Pack - 30 days'});const paymentUrl=data.paymentUrl||('solana:GR4uaBSvuKN56CKk9xaMEB2U9PeLQofDVhESp5JdbBMS?'+params.toString());saveRef(data.reference);waiting();startPoll();if(window.Solana&&typeof Solana.pay==='function')Solana.pay(paymentUrl);else throw new Error('Solana wallet payment is unavailable in this build.')}catch(e){setError(e.message||'Could not start payment.');locked()}}
+  window.onSolanaPaymentSubmitted=function(){note.textContent='Payment submitted. Verifying it on Solana...';startPoll();check(true)};
+  window.onSolanaPaymentError=function(message){stopPoll();locked('Payment was not completed. You can try again or check the previous payment.');setError(message||'Payment was not approved.')};
+  window.onEliteWalletStateChanged=function(address){address?check(true):(stopPoll(),locked('Connect your Solana wallet before subscribing.'))};window.EliteBoxingSolana={check};sub.addEventListener('click',subscribe);checkBtn.addEventListener('click',()=>check(false));document.addEventListener('visibilitychange',()=>{if(!document.hidden&&wallet())check(true)});window.addEventListener('focus',()=>{if(wallet())check(true)});locked();if(wallet())check(true);
+})();
+</script>
+</body>
+</html>
