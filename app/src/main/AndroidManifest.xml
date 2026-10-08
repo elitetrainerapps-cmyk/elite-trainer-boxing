@@ -5,7 +5,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/elite_boxing_cover"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="Elite Trainer Boxing · Solana"
         android:supportsRtl="true"
         android:theme="@style/Theme.EliteTrainerBoxing">
@@ -15,11 +16,14 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
             android:exported="true"
             android:screenOrientation="unspecified">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+
     </application>
 
 </manifest>

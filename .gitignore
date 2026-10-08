@@ -32,3 +32,18 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+# Private/local files
+local.properties
+*.jks
+*.keystore
+.env
+.env.*
+.DS_Store
+
+# Generated Android files
+.gradle/
+.idea/
+**/build/
+**/release/
+*.apk

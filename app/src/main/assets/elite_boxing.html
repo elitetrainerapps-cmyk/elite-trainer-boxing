@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Elite Trainer Boxing · Seeker SKR integration build · USDC + 150 SKR / 30 days -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -18,7 +19,7 @@
     .round-screen{text-align:center}.round-type{color:var(--gold2);font-size:11px;font-weight:950;letter-spacing:1.8px}.matchup{font-size:15px;font-weight:850;margin:8px 0 0}.timer{font-size:62px;font-weight:1000;letter-spacing:1px;color:var(--gold2);margin:24px 0 17px;font-variant-numeric:tabular-nums}.callout{min-height:150px;display:grid;place-items:center;padding:22px;border:1px solid rgba(244,180,0,.55);border-radius:21px;background:radial-gradient(circle,rgba(244,180,0,.12),#0c0c0c 68%);font-size:25px;font-weight:950;line-height:1.28}.mini-plan{text-align:left;display:grid;gap:7px;margin-top:13px}.mini-plan div{background:#0b0b0b;border-radius:10px;padding:10px 12px;color:#ccc;font-size:12px;line-height:1.4}.mini-plan b{color:var(--gold2)}.round-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.status{color:#8d8d8d;font-size:11px;margin-top:12px}.legal{text-align:center;color:#666;font-size:10px;margin-top:20px}
     .overlay{position:fixed;inset:0;z-index:20;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,.94)}.overlay.show{display:flex}.modal{width:min(500px,100%);max-height:88vh;overflow:auto;background:#111;border:1px solid #3d3420;border-radius:21px;padding:20px}.modal h2{margin:7px 0}.modal p{color:#bbb;line-height:1.5;font-size:13px}.benefits{list-style:none;padding:0}.benefits li{padding:7px 0;color:#ddd}.benefits li:before{content:"✓";color:var(--gold);font-weight:900;margin-right:8px}.price{font-size:23px;font-weight:950;color:var(--gold2);margin:14px 0}.check{display:flex;gap:10px;align-items:flex-start;margin:14px 0}.check input{width:20px;height:20px;accent-color:var(--gold)}.check label{text-transform:none;letter-spacing:0;color:#eee;font-size:13px}.modal .button{margin-top:8px}.modal .button:disabled{opacity:.35}
     .ring-logo{display:grid;place-items:center;font-size:24px}.ring-logo:before,.ring-logo:after{display:none}.ring-logo .glove{filter:grayscale(1) sepia(1) saturate(5)}
-    .wallet-card{margin:0 0 14px;padding:13px;border:1px solid rgba(153,69,255,.5);border-radius:15px;background:linear-gradient(135deg,rgba(153,69,255,.13),rgba(20,241,149,.055),#101010)}.wallet-row{display:flex;align-items:center;gap:10px}.solana-mark{font-size:18px;font-weight:1000;background:linear-gradient(90deg,#9945ff,#14f195);-webkit-background-clip:text;color:transparent;letter-spacing:1px}.wallet-button{margin-left:auto;border:1px solid #7251a8;border-radius:10px;background:#18111f;color:#fff;padding:10px 12px;font-size:11px;font-weight:950}.wallet-button.connected{border-color:#14f195;color:#14f195}.wallet-button:disabled{opacity:.9}.wallet-address{display:none;margin-top:9px;color:#aaa;font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pro-status{margin:12px 0 5px;padding:11px;border:1px solid #343434;border-radius:12px;background:#090909}.pro-status strong{display:block;color:var(--gold2);font-size:13px}.pro-note{color:#aaa;font-size:12px;line-height:1.45;margin-top:6px}.pro-expiry{display:none;color:#14f195;font-size:11px;font-weight:900;margin-top:8px}.pro-error{display:none;color:#ff8e8e;font-size:11px;margin-top:9px}.solana-foot{margin-top:10px;text-align:center;color:#777;font-size:10px}
+    .wallet-card{margin:0 0 14px;padding:13px;border:1px solid rgba(153,69,255,.5);border-radius:15px;background:linear-gradient(135deg,rgba(153,69,255,.13),rgba(20,241,149,.055),#101010)}.wallet-row{display:flex;align-items:center;gap:10px}.solana-mark{font-size:18px;font-weight:1000;background:linear-gradient(90deg,#9945ff,#14f195);-webkit-background-clip:text;color:transparent;letter-spacing:1px}.wallet-button{margin-left:auto;border:1px solid #7251a8;border-radius:10px;background:#18111f;color:#fff;padding:10px 12px;font-size:11px;font-weight:950}.wallet-button.connected{border-color:#14f195;color:#14f195}.wallet-button:disabled{opacity:.9}.wallet-address{display:none;margin-top:9px;color:#aaa;font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.pro-status{margin:12px 0 5px;padding:11px;border:1px solid #343434;border-radius:12px;background:#090909}.pro-status strong{display:block;color:var(--gold2);font-size:13px}.pro-note{color:#aaa;font-size:12px;line-height:1.45;margin-top:6px}.pro-expiry{display:none;color:#14f195;font-size:11px;font-weight:900;margin-top:8px}.pro-error{display:none;color:#ff8e8e;font-size:11px;margin-top:9px}.solana-foot{margin-top:10px;text-align:center;color:#777;font-size:10px}.payment-choice{display:grid;gap:9px;margin-top:10px}.skr-button{background:linear-gradient(135deg,#14f195,#69f5bd);color:#04130d!important}.skr-price{color:#14f195;font-weight:950}.payment-or{display:flex;align-items:center;gap:10px;color:#777;font-size:10px;font-weight:900;letter-spacing:1.3px;margin:8px 0}.payment-or:before,.payment-or:after{content:"";height:1px;background:#303030;flex:1}.skr-note{margin:7px 0 0;color:#a8a8a8;font-size:10px;line-height:1.35;text-align:center}
     .terms-card{display:flex;flex-direction:column;max-height:92vh}.terms-card>p{margin:2px 0 10px}.terms-scroll{height:55vh;overflow-y:auto;border:1px solid #3b321d;border-radius:13px;background:#080808;padding:14px;overscroll-behavior:contain}.terms-scroll h3{font-size:13px;line-height:1.3;margin:18px 0 7px;color:#fff}.terms-scroll .terms-doc-title{text-align:center;color:var(--gold2);margin-top:0;font-size:14px}.terms-scroll p,.terms-scroll li{font-size:11px;line-height:1.5;color:#ddd;text-align:left}.terms-scroll p{margin:0 0 9px}.terms-scroll ul{margin:0 0 10px;padding-left:20px}.terms-status{text-align:center;color:#999;font-size:10px;font-weight:900;margin:9px 0}.terms-status.ready{color:var(--gold2)}.terms-links{display:flex;justify-content:center;gap:15px;margin:0 0 9px}.terms-links a{color:var(--gold2);font-size:10px;font-weight:900}.terms-check.locked{opacity:.4}.terms-check.unlocked{opacity:1}.terms-check span{font-size:12px;line-height:1.35}.legal-button{border:0;background:transparent;color:#8a8a8a;text-decoration:underline;font-size:10px;margin-top:9px}
     @media(max-width:390px){.hero{padding-top:23px}.fight-orb{width:165px;height:165px}.hero h2{font-size:25px}.menu-row{min-height:79px}.timer{font-size:52px}.callout{font-size:22px}}
   </style>
@@ -43,6 +44,7 @@
       <div class="field"><label for="stance">Stance</label><select id="stance"><option value="orthodox">Orthodox</option><option value="southpaw">Southpaw</option></select></div>
       <div class="field"><label for="duration">Round length</label><select id="duration"><option value="60">1 minute</option><option value="120">2 minutes</option><option value="180" selected>3 minutes</option></select></div>
       <div class="field"><label for="speed">Coach speed</label><select id="speed"><option value="0.82">Slow</option><option value="1.02" selected>Medium</option><option value="1.35">Fast</option></select></div>
+      <div class="field"><label for="comboBreak">Break between combinations</label><select id="comboBreak"><option value="3">3 seconds</option><option value="4" selected>4 seconds</option><option value="6">6 seconds</option></select></div>
       <button class="button gold" id="startTrainer">START BOXING</button>
     </div>
   </section>
@@ -55,6 +57,7 @@
       <div class="field"><label for="yourStance">Your stance</label><select id="yourStance"><option value="orthodox">Orthodox</option><option value="southpaw">Southpaw</option></select></div>
       <div class="field"><label for="opponentStance">Opponent stance</label><select id="opponentStance"><option value="orthodox">Orthodox</option><option value="southpaw">Southpaw</option></select></div>
       <div class="field"><label for="vsSpeed">Coach speed</label><select id="vsSpeed"><option value="0.82">Slow</option><option value="1.02" selected>Medium</option><option value="1.35">Fast</option></select></div>
+      <div class="field"><label for="vsComboBreak">Break between combinations</label><select id="vsComboBreak"><option value="3">3 seconds</option><option value="4" selected>4 seconds</option><option value="6">6 seconds</option></select></div>
       <button class="button gold" id="startVs">START VS ROUND</button>
       <button class="button dark" id="managePro">CHECK PRO ACCESS</button>
     </div>
@@ -392,10 +395,11 @@
 </ul>
 <p>Effective date:</p>
 <p>5 August 2026</p>
-<h3>22. SOLANA PAYMENTS AND 30-DAY ACCESS</h3>
-<p>Where offered, Boxing VS Pack access costs 2.50 USDC and lasts for 30 days from a successfully verified payment. It is not an automatically renewing subscription.</p>
+<h3>22. SOLANA PAYMENTS, SKR AND 30-DAY ACCESS</h3>
+<p>Where offered, Boxing VS Pack access can be activated for 30 days using either 2.50 USDC or 150 SKR. These are manual 30-day access options and do not automatically renew.</p>
+<p>The SKR option uses the official Solana Mobile SKR token. The App clearly shows the required SKR amount before opening your compatible Solana wallet for approval. Token market values can change over time.</p>
 <p>You must review and approve the transaction in your compatible Solana wallet. Blockchain transactions are normally irreversible. You are responsible for checking the amount, token, connected wallet and receiving address before approving.</p>
-<p>Access is activated only after the App verifies on Solana that the exact payment came from the same wallet connected to the App. Solana network fees may apply.</p>
+<p>Access is activated only after the App verifies on Solana that the required USDC or SKR payment came from the same wallet connected to the App. Solana network fees may apply.</p>
 <p>If a payment is submitted but access does not activate, use Check Payment or contact support with the public transaction signature. Never provide your seed phrase or private key.</p>
 </div>
 <div class="terms-status" id="termsStatus">SCROLL TO THE BOTTOM TO UNLOCK ACCEPTANCE</div>
@@ -403,7 +407,7 @@
 <div class="check terms-check locked" id="termsCheckRow"><input type="checkbox" id="acceptCheck" disabled><span>I have read and agree to the Terms of Use and Privacy Policy.</span></div>
 <button class="button gold" id="acceptBtn" disabled>ACCEPT &amp; CONTINUE</button></section></div>
 
-<div class="overlay" id="proOverlay"><section class="modal"><div class="eyebrow">SOLANA · 30-DAY ACCESS</div><h2>Unlock Boxing VS Pack</h2><p>Train your boxing style against a specific opponent style.</p><ul class="benefits"><li>Style-vs-style game plans</li><li>Orthodox and southpaw matchups</li><li>Dangers, counters and tactics</li><li>Continuous spoken VS rounds</li></ul><div class="price" id="proAccessBadge">2.50 USDC · 30 DAYS</div><div class="pro-status"><strong id="proPaymentStatus">PRO LOCKED</strong><div class="pro-note" id="proPaymentNote">Connect your Solana wallet to unlock the VS Pack.</div><div class="pro-expiry" id="proExpiry"></div><div class="pro-error" id="proError"></div></div><button class="button gold" id="proSubscribeBtn">UNLOCK PRO — 2.50 USDC</button><button class="button dark" id="proCheckBtn">CHECK PAYMENT</button><button class="button dark" id="closePro">NOT NOW</button><div class="solana-foot">Payment is approved in your wallet and verified on Solana.</div></section></div>
+<div class="overlay" id="proOverlay"><section class="modal"><div class="eyebrow">SOLANA · 30-DAY ACCESS</div><h2>Unlock Boxing VS Pack</h2><p>Train your boxing style against a specific opponent style.</p><ul class="benefits"><li>Style-vs-style game plans</li><li>Orthodox and southpaw matchups</li><li>Dangers, counters and tactics</li><li>Continuous spoken VS rounds</li></ul><div class="price" id="proAccessBadge">2.50 USDC <span style="color:#777">OR</span> <span class="skr-price">150 SKR</span> · 30 DAYS</div><div class="pro-status"><strong id="proPaymentStatus">PRO LOCKED</strong><div class="pro-note" id="proPaymentNote">Connect your Solana wallet, then choose USDC or SKR.</div><div class="pro-expiry" id="proExpiry"></div><div class="pro-error" id="proError"></div></div><div class="payment-choice"><button class="button gold" id="proSubscribeBtn">UNLOCK WITH 2.50 USDC</button><div class="payment-or"><span>OR</span></div><button class="button skr-button" id="proSkrBtn">ACTIVATE WITH 150 SKR</button><div class="skr-note">150 SKR is shown before your wallet opens. Your wallet must approve the transfer before access is activated.</div></div><button class="button dark" id="proCheckBtn">CHECK PAYMENT</button><button class="button dark" id="closePro">NOT NOW</button><div class="solana-foot">Both payment options are verified on Solana and unlock 30 days of Boxing VS Pack access.</div></section></div>
 
 <script>
 (() => {
@@ -429,16 +433,110 @@
     "highguard":{watch:"Steady forward pressure behind a high guard.",plan:"Change angles and never retreat straight back.",defence:["jab to the body","step off line","pivot and cross"]},
     "southpaw":{watch:"Rear straights down the open side.",plan:"Win outside-foot position and control the lead hand.",defence:["lead hand control","step outside","slip outside"]}
   };
-  const straight=["jab","cross","double jab","jab to the body","cross to the body"],power=["lead hook","rear hook","lead uppercut","rear uppercut","lead hook to the body"];
+  const trainerCombos={
+    "boxer-puncher":[
+      "jab, cross",
+      "double jab, cross",
+      "jab, cross, lead hook",
+      "jab to the body, cross, lead hook",
+      "jab, rear uppercut, lead hook",
+      "double jab, rear uppercut",
+      "jab, cross, pivot out",
+      "jab to the body, cross, step off line"
+    ],
+    "peekaboo":[
+      "slip outside, cross, lead hook",
+      "jab, slip inside, rear uppercut, lead hook",
+      "cross to the body, lead hook, rear uppercut",
+      "lead hook to the body, lead hook to the head, cross",
+      "roll under, lead hook, cross",
+      "jab, cross, roll under",
+      "rear uppercut, lead hook, cross",
+      "slip inside, lead hook to the body, lead hook to the head"
+    ],
+    "outboxer":[
+      "jab, cross, step out",
+      "double jab, cross",
+      "jab to the body, cross, pivot away",
+      "jab, lead hook, pivot away",
+      "double jab, step off line",
+      "jab, cross to the body, circle off",
+      "jab while circling, cross",
+      "jab, rear uppercut, lead hook"
+    ],
+    "counterpuncher":[
+      "catch the jab, cross, lead hook",
+      "slip outside, cross, lead hook",
+      "pull back, cross",
+      "parry the jab, jab, cross",
+      "roll under, lead hook, cross",
+      "slip inside, rear uppercut, lead hook",
+      "step back, cross, lead hook",
+      "catch the jab, cross to the body, lead hook"
+    ],
+    "philly":[
+      "shoulder roll, cross",
+      "shoulder roll, cross, lead hook",
+      "pull back, cross, lead hook",
+      "catch the jab, jab, cross",
+      "shoulder roll, rear uppercut, lead hook",
+      "jab to the chest, cross, roll away",
+      "lead hook to the body, cross",
+      "pull back, cross to the body, lead hook"
+    ],
+    "inside":[
+      "jab, step inside, lead hook to the body, lead hook to the head",
+      "rear uppercut, lead hook, cross",
+      "lead uppercut, cross, lead hook",
+      "lead hook to the body, rear uppercut, lead hook",
+      "cross to the body, lead hook, rear uppercut",
+      "slip inside, rear uppercut, lead hook",
+      "lead hook, rear hook, roll under",
+      "rear uppercut, lead hook to the body, lead hook to the head"
+    ],
+    "highguard":[
+      "high guard, step in, jab, cross",
+      "double jab, cross",
+      "jab to the body, cross, lead hook",
+      "jab, lead hook to the body, cross",
+      "cross, lead hook, cross",
+      "jab, cross, roll under",
+      "double jab, step off line",
+      "jab, rear uppercut, lead hook"
+    ],
+    "southpaw":[
+      "jab, rear cross, step outside",
+      "double jab, rear cross",
+      "lead hand touch, rear cross, lead hook",
+      "jab to the body, rear cross, lead hook",
+      "jab, rear uppercut, lead hook",
+      "lead hook to the body, rear cross",
+      "jab, rear cross, pivot out",
+      "lead hand touch, rear cross to the body, lead hook"
+    ]
+  };
+  const vsCombos={
+    "boxer-puncher":["jab, cross, lead hook","double jab, cross","jab to the body, cross, pivot out"],
+    "peekaboo":["jab, step back, cross","jab, cross, pivot away","rear uppercut, lead hook, step off line"],
+    "outboxer":["double jab, cross","jab to the body, cross, step off line","jab, lead hook, pivot out"],
+    "counterpuncher":["feint the jab, cross, lead hook","double jab, cross","jab to the body, lead hook, pivot out"],
+    "philly":["double jab, cross","jab to the body, lead hook, cross","jab, rear uppercut, lead hook"],
+    "inside":["jab, cross, pivot away","double jab, step off line","jab to the body, cross, lead hook"],
+    "highguard":["jab to the body, cross, pivot out","double jab, lead hook","jab, rear uppercut, lead hook"],
+    "southpaw":["lead hand touch, rear cross, lead hook","jab to the chest, rear cross, step outside","double jab, rear cross"]
+  };
   Object.entries(styles).forEach(([key,s])=>{["style","yourStyle","opponentStyle"].forEach(id=>$(id).add(new Option(s.name,key)))});$("opponentStyle").value="outboxer";
   $("style").addEventListener("change",()=>$("styleNote").textContent=styles[$("style").value].note);$("styleNote").textContent=styles[$("style").value].note;
   let proActive=false,isVs=false,running=false,paused=false,seconds=180,timerId=null,calloutId=null,returnScreen="trainerScreen";
   function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));$(id).classList.add("active");window.scrollTo(0,0)}
   function coachRate(){return Number($(isVs?"vsSpeed":"speed").value)}
+  function comboBreakMs(){return Number($(isVs?"vsComboBreak":"comboBreak").value)*1000}
   function speak(text){const spoken=text.replace(/\blead\b/gi,"leed"),rate=coachRate();if(window.AndroidTTS?.speak)window.AndroidTTS.speak(spoken,rate);else if("speechSynthesis" in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(spoken);u.rate=rate;speechSynthesis.speak(u)}}
   function stopVoice(){window.AndroidTTS?.stop();if("speechSynthesis" in window)speechSynthesis.cancel()}
-  function combo(){if(isVs){const yours=styles[$("yourStyle").value],match=plans[$("opponentStyle").value];return [pick(match.defence),pick(yours.open),pick(Math.random()<.5?straight:power),pick(yours.end)].join(", ")}const s=styles[$("style").value];return [pick(s.open),pick(straight),pick(power),pick(s.end)].join(", ")}
-  function nextCall(){if(!running||paused)return;const text=combo(),rate=coachRate(),gap=rate<.9?6200:rate>1.2?3300:4700;$("callout").textContent=text;speak(text);clearTimeout(calloutId);calloutId=setTimeout(nextCall,gap)}
+  function prepareCombo(parts){return parts.flatMap(part=>String(part).split(",")).map(part=>part.trim().replace(/\bled\b/gi,"lead")).filter(Boolean).slice(0,4).join(", ")}
+  function combo(){const list=isVs?vsCombos[$("opponentStyle").value]:trainerCombos[$("style").value];return prepareCombo([pick(list)])}
+  function estimatedSpeechMs(text){const words=text.trim().split(/\s+/).filter(Boolean).length,rate=coachRate();return Math.max(1800,Math.round((words*430+700)/rate))}
+  function nextCall(){if(!running||paused)return;const text=combo(),gap=estimatedSpeechMs(text)+comboBreakMs();$("callout").textContent=text;speak(text);clearTimeout(calloutId);calloutId=setTimeout(nextCall,gap)}
   function fmt(s){return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0")}
   function begin(){running=true;paused=false;$("pause").textContent="PAUSE";$("status").textContent="Coach active";show("roundScreen");speak("Round starts. Box.");clearInterval(timerId);timerId=setInterval(()=>{if(!running||paused)return;seconds--;$("timer").textContent=fmt(seconds);if(seconds<=0){endRound("Round complete");speak("Time. Round complete.")}},1000);calloutId=setTimeout(nextCall,1200)}
   function endRound(message="Stopped"){running=false;paused=false;clearInterval(timerId);clearTimeout(calloutId);stopVoice();$("status").textContent=message}
@@ -471,21 +569,32 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <script>
 (function(){
   const PRO_API_BASE='https://elite-trainer-boxing.vercel.app/api/pro';
-  const REF_KEY='elite_boxing_pro_reference_v1',EXPIRY_KEY='elite_boxing_pro_expiry_v1';
-  let poll=null,count=0;
-  const id=x=>document.getElementById(x),status=id('proPaymentStatus'),note=id('proPaymentNote'),sub=id('proSubscribeBtn'),checkBtn=id('proCheckBtn'),expiry=id('proExpiry'),error=id('proError'),badge=id('proAccessBadge');
-  const wallet=()=>{try{return localStorage.getItem(SOLANA_WALLET_STORAGE_KEY)||''}catch(e){return''}},reference=()=>{try{return localStorage.getItem(REF_KEY)||''}catch(e){return''}},saveRef=v=>{try{v?localStorage.setItem(REF_KEY,v):localStorage.removeItem(REF_KEY)}catch(e){}};
+  const REF_KEY='elite_boxing_pro_reference_v1',EXPIRY_KEY='elite_boxing_pro_expiry_v1',SKR_REF_KEY='elite_boxing_skr_reference_v1';
+  const SKR_MINT='SKRbvo6Gf7GondiT3BbTfuRDPqLWei4j2Qy2NPGZhW3';
+  const SKR_AMOUNT='150';
+  const SKR_RECIPIENT='7sJzJVTxZdN1p1rfYzDPpBYqnYV2HaJdPXJpqzw3JVgK';
+  let poll=null,count=0,pollMode='both';
+  const id=x=>document.getElementById(x),status=id('proPaymentStatus'),note=id('proPaymentNote'),sub=id('proSubscribeBtn'),skrBtn=id('proSkrBtn'),checkBtn=id('proCheckBtn'),expiry=id('proExpiry'),error=id('proError'),badge=id('proAccessBadge');
+  const wallet=()=>{try{return localStorage.getItem(SOLANA_WALLET_STORAGE_KEY)||''}catch(e){return''}},reference=()=>{try{return localStorage.getItem(REF_KEY)||''}catch(e){return''}},saveRef=v=>{try{v?localStorage.setItem(REF_KEY,v):localStorage.removeItem(REF_KEY)}catch(e){}},skrReference=()=>{try{return localStorage.getItem(SKR_REF_KEY)||''}catch(e){return''}},saveSkrRef=v=>{try{v?localStorage.setItem(SKR_REF_KEY,v):localStorage.removeItem(SKR_REF_KEY)}catch(e){}};
+  const B58='123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+  function base58(bytes){let digits=[0];for(const b of bytes){let carry=b;for(let j=0;j<digits.length;j++){carry+=digits[j]<<8;digits[j]=carry%58;carry=(carry/58)|0}while(carry){digits.push(carry%58);carry=(carry/58)|0}}let out='';for(let k=0;k<bytes.length&&bytes[k]===0;k++)out+='1';for(let q=digits.length-1;q>=0;q--)out+=B58[digits[q]];return out}
+  function freshReference(){const bytes=new Uint8Array(32);crypto.getRandomValues(bytes);return base58(bytes)}
   function setError(v){error.textContent=v||'';error.style.display=v?'block':'none'}
-  function locked(message){window.setBoxingProActive(false);status.textContent='PRO LOCKED';badge.textContent='2.50 USDC · 30 DAYS';note.textContent=message||'Connect your Solana wallet, then approve the 2.50 USDC payment.';sub.style.display='block';sub.disabled=!wallet();sub.textContent='UNLOCK PRO — 2.50 USDC';checkBtn.style.display=reference()?'block':'none';expiry.style.display='none'}
-  function waiting(){window.setBoxingProActive(false);status.textContent='WAITING FOR PAYMENT';note.textContent='Approve payment using the same connected wallet, then return here. We will verify it automatically.';sub.style.display='none';checkBtn.style.display='block';expiry.style.display='none'}
-  function active(until){setError('');window.setBoxingProActive(true);status.textContent='PRO ACTIVE';badge.textContent='PRO ACTIVE';note.textContent='Boxing VS Pack is unlocked and verified on Solana.';sub.style.display='none';checkBtn.style.display='none';expiry.textContent=until?'ACTIVE UNTIL '+new Date(until).toLocaleDateString('en-GB'):'';expiry.style.display=until?'block':'none';try{if(until)localStorage.setItem(EXPIRY_KEY,until)}catch(e){}stopPoll()}
+  function setPayButtons(show){sub.style.display=show?'block':'none';skrBtn.style.display=show?'block':'none';const divider=document.querySelector('.payment-or'),sn=document.querySelector('.skr-note');if(divider)divider.style.display=show?'flex':'none';if(sn)sn.style.display=show?'block':'none'}
+  function locked(message){window.setBoxingProActive(false);status.textContent='PRO LOCKED';badge.innerHTML='2.50 USDC <span style="color:#777">OR</span> <span class="skr-price">150 SKR</span> · 30 DAYS';note.textContent=message||'Connect your Solana wallet, then choose 2.50 USDC or 150 SKR.';setPayButtons(true);sub.disabled=!wallet();skrBtn.disabled=!wallet();sub.textContent='UNLOCK WITH 2.50 USDC';skrBtn.textContent='ACTIVATE WITH 150 SKR';checkBtn.style.display=(reference()||skrReference()||wallet())?'block':'none';expiry.style.display='none'}
+  function waiting(method){window.setBoxingProActive(false);status.textContent='WAITING FOR PAYMENT';note.textContent=method==='SKR'?'Approve exactly 150 SKR using the same connected wallet, then return here. We will verify the SKR transfer on-chain.':'Approve the 2.50 USDC payment using the same connected wallet, then return here. We will verify it automatically.';setPayButtons(false);checkBtn.style.display='block';expiry.style.display='none'}
+  function active(until,method){setError('');window.setBoxingProActive(true);status.textContent='PRO ACTIVE';badge.textContent='PRO ACTIVE · '+(method||'SOLANA');note.textContent='Boxing VS Pack is unlocked. This '+(method||'Solana')+' activation was verified on-chain.';setPayButtons(false);checkBtn.style.display='none';expiry.textContent=until?'ACTIVE UNTIL '+new Date(until).toLocaleDateString('en-GB'):'';expiry.style.display=until?'block':'none';try{if(until)localStorage.setItem(EXPIRY_KEY,until)}catch(e){}stopPoll()}
   async function post(path,payload){const r=await fetch(PRO_API_BASE+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});let data={};try{data=await r.json()}catch(e){}if(!r.ok)throw new Error(data.error||('Server error '+r.status));return data}
-  async function check(silent=true){if(!wallet()){locked('Connect your Solana wallet before subscribing.');return false}if(!silent)setError('');try{const data=await post('/check',{wallet:wallet(),reference:reference(),product:'elite_boxing_pro'});if(data.active){if(data.reference)saveRef(data.reference);active(data.expiresAt||'');return true}reference()?waiting():locked();return false}catch(e){if(!silent)setError(e.message||'Could not check payment.');reference()?waiting():locked();return false}}
-  function stopPoll(){if(poll)clearInterval(poll);poll=null;count=0}function startPoll(){stopPoll();poll=setInterval(async()=>{count++;if(await check(true)||count>=40)stopPoll()},3000)}
-  async function subscribe(){const connectedWallet=wallet();if(!connectedWallet){locked('Connect your Solana wallet first.');return}setError('');sub.disabled=true;sub.textContent='CREATING PAYMENT...';try{const data=await post('/create-checkout',{wallet:connectedWallet,product:'elite_boxing_pro'});if(data.active){active(data.expiresAt||'');return}if(!data.reference)throw new Error('Payment request was not created.');const params=new URLSearchParams({amount:'2.50','spl-token':'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',reference:data.reference,label:'Elite Trainer Boxing',message:'Boxing VS Pack - 30 days'});const paymentUrl=data.paymentUrl||('solana:GR4uaBSvuKN56CKk9xaMEB2U9PeLQofDVhESp5JdbBMS?'+params.toString());saveRef(data.reference);waiting();startPoll();if(window.Solana&&typeof Solana.pay==='function')Solana.pay(paymentUrl);else throw new Error('Solana wallet payment is unavailable in this build.')}catch(e){setError(e.message||'Could not start payment.');locked()}}
-  window.onSolanaPaymentSubmitted=function(){note.textContent='Payment submitted. Verifying it on Solana...';startPoll();check(true)};
+  async function checkUsdc(silent=true){if(!wallet())return false;try{const data=await post('/check',{wallet:wallet(),reference:reference(),product:'elite_boxing_pro'});if(data.active){if(data.reference)saveRef(data.reference);active(data.expiresAt||'','USDC');return true}return false}catch(e){if(!silent)setError(e.message||'Could not check USDC payment.');return false}}
+  async function checkSkr(silent=true){if(!wallet())return false;try{const data=await post('/check-skr',{wallet:wallet(),reference:skrReference(),product:'elite_boxing_pro'});if(data.active){active(data.expiresAt||'','SKR');return true}return false}catch(e){if(!silent)setError(e.message||'Could not check SKR payment.');return false}}
+  async function check(silent=true){if(!wallet()){locked('Connect your Solana wallet before subscribing.');return false}if(!silent)setError('');if(await checkUsdc(silent))return true;if(await checkSkr(silent))return true;if(reference())waiting('USDC');else locked();return false}
+  function stopPoll(){if(poll)clearInterval(poll);poll=null;count=0;pollMode='both'}
+  function startPoll(mode='both'){stopPoll();pollMode=mode;poll=setInterval(async()=>{count++;let ok=false;if(pollMode==='SKR')ok=await checkSkr(true);else if(pollMode==='USDC')ok=await checkUsdc(true);else ok=await check(true);if(ok||count>=40)stopPoll()},3000)}
+  async function subscribe(){const connectedWallet=wallet();if(!connectedWallet){locked('Connect your Solana wallet first.');return}setError('');sub.disabled=true;skrBtn.disabled=true;sub.textContent='CREATING PAYMENT...';try{const data=await post('/create-checkout',{wallet:connectedWallet,product:'elite_boxing_pro'});if(data.active){active(data.expiresAt||'','USDC');return}if(!data.reference)throw new Error('Payment request was not created.');const params=new URLSearchParams({amount:'2.50','spl-token':'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',reference:data.reference,label:'Elite Trainer Boxing',message:'Boxing VS Pack - 30 days'});const paymentUrl=data.paymentUrl||('solana:'+SKR_RECIPIENT+'?'+params.toString());saveRef(data.reference);waiting('USDC');startPoll('USDC');if(window.Solana&&typeof Solana.pay==='function')Solana.pay(paymentUrl);else throw new Error('Solana wallet payment is unavailable in this build.')}catch(e){setError(e.message||'Could not start payment.');locked()}}
+  async function subscribeSkr(){const connectedWallet=wallet();if(!connectedWallet){locked('Connect your Solana wallet first.');return}setError('');sub.disabled=true;skrBtn.disabled=true;skrBtn.textContent='OPENING 150 SKR PAYMENT...';try{let ref=skrReference();if(!ref){ref=freshReference();saveSkrRef(ref)}const params=new URLSearchParams({amount:SKR_AMOUNT,'spl-token':SKR_MINT,reference:ref,label:'Elite Trainer Boxing',message:'Boxing VS Pack - 30 days with SKR',memo:'elite_boxing_skr_30d'});const paymentUrl='solana:'+SKR_RECIPIENT+'?'+params.toString();waiting('SKR');startPoll('SKR');if(window.Solana&&typeof Solana.pay==='function')Solana.pay(paymentUrl);else throw new Error('Solana wallet payment is unavailable in this build.')}catch(e){setError(e.message||'Could not start SKR payment.');locked()}}
+  window.onSolanaPaymentSubmitted=function(){note.textContent='Payment submitted. Verifying it on Solana...';startPoll('both');check(true)};
   window.onSolanaPaymentError=function(message){stopPoll();locked('Payment was not completed. You can try again or check the previous payment.');setError(message||'Payment was not approved.')};
-  window.onEliteWalletStateChanged=function(address){address?check(true):(stopPoll(),locked('Connect your Solana wallet before subscribing.'))};window.EliteBoxingSolana={check};sub.addEventListener('click',subscribe);checkBtn.addEventListener('click',()=>check(false));document.addEventListener('visibilitychange',()=>{if(!document.hidden&&wallet())check(true)});window.addEventListener('focus',()=>{if(wallet())check(true)});locked();if(wallet())check(true);
+  window.onEliteWalletStateChanged=function(address){address?check(true):(stopPoll(),locked('Connect your Solana wallet before subscribing.'))};window.EliteBoxingSolana={check,checkSkr};sub.addEventListener('click',subscribe);skrBtn.addEventListener('click',subscribeSkr);checkBtn.addEventListener('click',()=>check(false));document.addEventListener('visibilitychange',()=>{if(!document.hidden&&wallet())check(true)});window.addEventListener('focus',()=>{if(wallet())check(true)});locked();if(wallet())check(true);
 })();
 </script>
 </body>

@@ -5,14 +5,14 @@ plugins {
 
 android {
     namespace = "com.elitetrainer.boxing.solana"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.elitetrainer.boxing.solana"
         minSdk = 26
         targetSdk = 35
-        versionCode = 2
-        versionName = "1.2"
+        versionCode = 6
+        versionName = "1.6"
     }
 
     buildTypes {
